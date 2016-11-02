@@ -15,6 +15,7 @@ class MenuController
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - Delete all entries"
      print "Enter your selection: "
      #retrieve user input from the command line using gets
      selection = gets.to_i
@@ -41,6 +42,10 @@ class MenuController
         # => terminates the program
         exit(0)
         # => catches invalid user input, goes back to main_menu
+     when 6
+       system "clear"
+       detonate_entries
+       main_menu
      else
         system "clear"
         puts "Sorry, that is not a valid input"
@@ -48,6 +53,14 @@ class MenuController
      end
   end
   # =>
+
+  def detonate_entries
+    system"clear"
+    address_book.entries.clear
+    puts "Entries detonated"
+  end
+
+
   def view_all_entries
      # =>iterate through entries in AddressBook using each
      address_book.entries.each do |entry|
